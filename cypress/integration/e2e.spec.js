@@ -35,18 +35,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         
         //adicionando 4 produtos ao carrinho de páginas diferentes
         cy.addProduto('Argus All-Weather Tank', 'M', 'Gray', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
         cy.get(':nth-child(2) > .page-numbers').click()
         cy.addProduto('Bruno Compete Hoodie', 'L', 'Blue', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
         cy.get(':nth-child(3) > .page-numbers').click()
         cy.addProduto('Cronus Yoga Pant', '33', 'Black', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
         cy.get('ul.page-numbers > :nth-child(4) > .page-numbers').click()
         cy.addProduto('Hawkeye Yoga Short', '36', 'Gray', 1)
         //checkout preenchendo dados com faker
-        cy.get('.woocommerce-message > .button').click()
-        cy.get('.checkout-button').click()
+        cy.checkoutProduto()
         EnderecoPage.editarEnderecoFaturamento(
             nomeFaker, 
             sobrenomeFaker, 
@@ -67,18 +63,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta - usando arquivo de dados', () => {               
         //adicionando 4 produtos ao carrinho de páginas diferentes
         cy.addProduto('Argus All-Weather Tank', 'M', 'Gray', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
         cy.get(':nth-child(2) > .page-numbers').click()
         cy.addProduto('Bruno Compete Hoodie', 'L', 'Blue', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
         cy.get(':nth-child(3) > .page-numbers').click()
-        cy.addProduto('Cronus Yoga Pant', '33', 'Black', 1)
-        cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
+        cy.addProduto('Cronus Yoga Pant', '33', 'Black', 1) 
         cy.get('ul.page-numbers > :nth-child(4) > .page-numbers').click()
         cy.addProduto('Hawkeye Yoga Short', '36', 'Gray', 1)
         //checkout preenchendo dados com arquivo de dados
-        cy.get('.woocommerce-message > .button').click()
-        cy.get('.checkout-button').click()
+        cy.checkoutProduto()
         EnderecoPage.editarEnderecoFaturamento(
             dadosEndereco[1].nome,
             dadosEndereco[1].sobrenome,

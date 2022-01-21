@@ -39,4 +39,10 @@ Cypress.Commands.add('addProduto', (produto, tamanho, cor, quantidade) => {
     cy.get('.button-variable-item-' + cor).click()
     cy.get('.input-text').clear().type(quantidade)
     cy.get('.single_add_to_cart_button').click()
+    cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
+})
+
+Cypress.Commands.add('checkoutProduto', () => {
+    cy.get('#cart > .dropdown-toggle').click()
+    cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
 })
